@@ -47,4 +47,11 @@ dt[!is.na(dive), dive := rleid(dive)][]
 ## Volvemos a calcular el tiempo de buceo solo para los buceos válidos
 dt[!is.na(dive), diving_time := (max(daytime) - min(daytime)), dive][]
 
+## Generamos un histograma para visualizar los tiempos de buceo
+dt[, hist(as.numeric(diving_time), breaks = 100)];
+## Añadimos lineas representando los extremos de los datos
+abline(v = range(dt$diving_time, na.rm = TRUE));
+## Añadimos líneas representando la mediana
+abline(v = median(dt$diving_time, na.rm = TRUE), col = "red4")
+
 save(dt, file = "data/dt.RData")

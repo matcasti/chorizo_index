@@ -15,9 +15,9 @@ rm(list=ls())
 data_path = "data/" # path where your TDR files are stored (after ZOC)
 fig_path = "figures/" # path for figures to be stored
 
-setwd(dir = data_path)
+# setwd(dir = data_path)
 
-load("WED_08_samp.RData") ## load TDR files
+data("dt") ## load TDR files
 dt$daytime <- as.POSIXct(dt$daytime,format="%d-%m-%Y %H:%M:%S",tz="GMT") ## Your dates need to be in
                                                                          ## POSIXct format
 ## column names: date-hour = "daytime", id = "seal", depth = "depth", dive number = "num", temperature = "temp",
